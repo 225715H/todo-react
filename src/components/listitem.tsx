@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import { useState } from 'react'
+import { Link } from 'expo-router'
 
 interface Props {
   title?: string
@@ -14,14 +15,18 @@ const ListItem = (props: Props): JSX.Element => {
   return (
     <View style={styles.item}>
       <CheckBox
-           checked={checked}
-           onPress={toggleCheckbox}
-           iconType="material-community"
-           checkedIcon="checkbox-marked"
-           uncheckedIcon="checkbox-blank-outline"
-           checkedColor="blue"
-         />
-      <Text style={styles.title}>{title}</Text>
+          checked={checked}
+          onPress={toggleCheckbox}
+          iconType="material-community"
+          checkedIcon="checkbox-marked"
+          uncheckedIcon="checkbox-blank-outline"
+          checkedColor="blue"
+        />
+      <Link href="/todo/edit" asChild>
+        <TouchableOpacity style={styles.itemtouch}>
+          <Text style={styles.title}>{title}</Text>
+        </TouchableOpacity>
+      </Link>
     </View>
   )
 }
@@ -37,11 +42,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 8
   },
+  itemtouch: {
+    borderRadius: 10,
+    marginBottom: 8
+  },
   title: {
     fontSize: 24,
     fontWeight: 'normal',
     marginBottom: 8,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 8
   }
 })
 

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Button from '../../components/button'
 import Header from '../../components/header'
 import HeaderButton from '../../components/headerButton'
+import BackButton from '../../components/backButton'
 
 const handlePress = (): void => {
   router.push('/todo/todolist')
@@ -16,6 +17,8 @@ const Signup = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
+      <BackButton label='home' onPress={() => { router.back() }} style={{ top: 60 }} />
+      <HeaderButton label='Login' onPress={() => { router.replace('auth/login') }} style={{ top: 60 }} />
       <View style={styles.inner}>
         <Text style={styles.title}>Signup</Text>
         <TextInput
@@ -38,7 +41,6 @@ const Signup = (): JSX.Element => {
         />
         <Button label='signup' onPress={handlePress} />
       </View>
-      <HeaderButton label='Login' onPress={() => { router.replace('auth/login') }} style={{ top: 60 }} />
     </View>
   )
 }

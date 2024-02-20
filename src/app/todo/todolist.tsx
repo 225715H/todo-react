@@ -17,6 +17,7 @@ const TodoList = (): JSX.Element => {
   return (
     <View style={styles.container}>
       <Header />
+      <HeaderButton label='Logout' onPress={() => { router.replace('auth/signup') }} style={{ top: 60 }} />
       <ListFilter />
       <ScrollView style={styles.list} >
         <ListItem title='aaa' tag='1'/>
@@ -31,7 +32,6 @@ const TodoList = (): JSX.Element => {
       <CircleButton onPress={handlePress} >
         <Feather name="plus" size={40} color="#ffffff" />
       </CircleButton>
-      <HeaderButton label='Logout' onPress={() => { router.replace('auth/signup') }} style={{ top: 60 }} />
     </View>
   )
 }
